@@ -1,0 +1,7 @@
+MANIFEST
+Makefile.PL
+README
+Sound.pm
+Sound.xs
+test.pl
+welcome.wav
