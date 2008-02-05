@@ -3,7 +3,7 @@
 # Win32::Sound - An extension to play with Windows sounds
 # 
 # Author: Aldo Calpini <dada@divinf.it>
-# Version: 0.45
+# Version: 0.47
 # Info:
 #       http://www.divinf.it/dada/perl
 #       http://www.perl.com/CPAN/authors/Aldo_Calpini
@@ -18,6 +18,8 @@
 # 0.45 (09 Apr 1999) added $! support, documentation et goodies
 # 0.46 (25 Sep 1999) fixed small bug in DESTROY, wo was used without being
 #		     initialized (Gurusamy Sarathy <gsar@activestate.com>)
+# 0.47 (22 May 2000) support for passing Unicode string to Play()
+#                    (Doug Lankshear <dougl@activestate.com>)
 
 package Win32::Sound;
 
@@ -72,7 +74,7 @@ sub AUTOLOAD {
 #######################################################################
 # STATIC OBJECT PROPERTIES
 #
-$VERSION="0.46"; 
+$VERSION="0.47"; 
 undef unless $VERSION; # [dada] to avoid "possible typo" warning
 
 #######################################################################

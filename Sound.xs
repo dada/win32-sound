@@ -21,27 +21,14 @@
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
+
+#include "../ppport.h"
+
 // Section for the constant definitions.
 #define CROAK croak
 
 #undef WORD
 #define WORD __TEMP_WORD
-
-#ifndef PERL_VERSION
-#  include "patchlevel.h"
-#  define PERL_REVISION		5
-#  define PERL_VERSION		PATCHLEVEL
-#  define PERL_SUBVERSION	SUBVERSION
-#endif
-
-#if PERL_REVISION == 5 && (PERL_VERSION < 4 || \
-			   (PERL_VERSION == 4 && PERL_SUBVERSION <= 75))
-#  define PL_sv_undef		sv_undef
-#  define PL_sv_yes		sv_yes
-#  define PL_sv_no		sv_no
-#  define PL_na			na
-#  define PL_dowarn		dowarn
-#endif
 
 #define DEV_WAVEOUT 1
 #define DEV_WAVEIN  2
@@ -329,6 +316,7 @@ void
 Play(...)
 PPCODE:
     HANDLE myhandle;
+    BOOL bResult;
     UINT flag=0; 
     LPCSTR name = NULL;
     STRLEN n_a;
@@ -336,9 +324,19 @@ PPCODE:
     if (items > 0)
         name = (LPCSTR)SvPV(ST(0),n_a);
     if (items > 1)
-        flag = (UINT)SvIV(ST(1));
-    if (sndPlaySound(name, flag))
-        XSRETURN_YES;
+	flag = (UINT)SvIV(ST(1));
+
+    if (name && USING_WIDE()) {
+	WCHAR wbuffer[MAX_PATH+1];
+	A2WHELPER(name, wbuffer, sizeof(wbuffer));
+	bResult = sndPlaySoundW(wbuffer, flag);
+    }
+    else {
+	bResult = sndPlaySoundA(name, flag);
+    }
+
+    if (bResult)
+	XSRETURN_YES;
     else
         XSRETURN_NO;
 
@@ -871,19 +869,19 @@ CODE:
     if(tmpsv != NULL) {
         wavfmt.nChannels = (WORD) SvIV(*tmpsv);
     } else {
-        if(dowarn) warn("WaveOut::Save: invalid format (channels)");
+        if(PL_dowarn) warn("WaveOut::Save: invalid format (channels)");
     }
     tmpsv = hv_fetch(hself, "samplerate", 10, 0);
     if(tmpsv != NULL) {
         wavfmt.nSamplesPerSec = (DWORD) SvIV(*tmpsv);
     } else {
-        if(dowarn) warn("WaveOut::Save: invalid format (samplerate)");
+        if(PL_dowarn) warn("WaveOut::Save: invalid format (samplerate)");
     }
     tmpsv = hv_fetch(hself, "bits", 4, 0);
     if(tmpsv != NULL) {
         wavfmt.wBitsPerSample = (DWORD) SvIV(*tmpsv);
     } else {
-        if(dowarn) warn("WaveOut::Save: invalid format (bits)");
+        if(PL_dowarn) warn("WaveOut::Save: invalid format (bits)");
     }
     tmpsv = hv_fetch(hself, "blockalign", 10, 0);
     if(tmpsv != NULL) {
