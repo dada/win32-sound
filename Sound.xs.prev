@@ -1430,39 +1430,37 @@ PPCODE:
     LPWAVEHDR wh;
     MMRESULT mmr;
     hself = (HV*)SvRV(self);
+    tmpsv = hv_fetch(hself, "wavheadlock", 11, 0);
+    if(tmpsv != NULL) {
+        wh = (LPWAVEHDR) SvIV(*tmpsv);
+        if(wh->dwFlags & WHDR_PREPARED) {
+            mmr = waveOutUnprepareHeader(wo, wh, sizeof(wh));
+        }
+        GlobalUnlock((HGLOBAL) wh);
+    }
+    tmpsv = hv_fetch(hself, "wavhead", 7, 0);
+    if(tmpsv != NULL) {
+        hg = (HGLOBAL) SvIV(*tmpsv);
+        GlobalFree(hg);
+    }
+    tmpsv = hv_fetch(hself, "wavdatalock", 11, 0);
+    if(tmpsv != NULL) {
+        hg = (HGLOBAL) SvIV(*tmpsv);
+        GlobalUnlock(hg);
+    }
+    tmpsv = hv_fetch(hself, "wavdata", 7, 0);
+    if(tmpsv != NULL) {
+        hg = (HGLOBAL) SvIV(*tmpsv);
+        GlobalFree(hg);
+    }
+    tmpsv = hv_fetch(hself, "mmio", 4, 0);
+    if(tmpsv != NULL) {
+        mmio = (HMMIO) SvIV(*tmpsv);
+        mmioClose(mmio, 0);
+    }
     tmpsv = hv_fetch(hself, "handle", 6, 0);
     if(tmpsv != NULL) {
         wo = (HWAVEOUT) SvIV(*tmpsv);
-        tmpsv = hv_fetch(hself, "wavheadlock", 11, 0);
-        if(tmpsv != NULL) {
-            wh = (LPWAVEHDR) SvIV(*tmpsv);
-            if(wh->dwFlags & WHDR_PREPARED) {
-                mmr = waveOutUnprepareHeader(wo, wh, sizeof(wh));
-            }
-            GlobalUnlock((HGLOBAL) wh);
-        }
-        tmpsv = hv_fetch(hself, "wavhead", 7, 0);
-        if(tmpsv != NULL) {
-            hg = (HGLOBAL) SvIV(*tmpsv);
-            GlobalFree(hg);
-        }
-        tmpsv = hv_fetch(hself, "wavdatalock", 11, 0);
-        if(tmpsv != NULL) {
-            hg = (HGLOBAL) SvIV(*tmpsv);
-            GlobalUnlock(hg);
-        }
-        tmpsv = hv_fetch(hself, "wavdata", 7, 0);
-        if(tmpsv != NULL) {
-            hg = (HGLOBAL) SvIV(*tmpsv);
-            GlobalFree(hg);
-        }        
-	tmpsv = hv_fetch(hself, "mmio", 4, 0);
-	if(tmpsv != NULL) {
-	    mmio = (HMMIO) SvIV(*tmpsv);
-	    mmioClose(mmio, 0);
-	}
         waveOutClose(wo);
-    } else {
-	XSRETURN_NO;
     }
     XSRETURN_YES;

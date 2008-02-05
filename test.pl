@@ -4,11 +4,11 @@ print "\nWin32::Sound version ", $Win32::Sound::VERSION, " Test Program\n";
 print "by Aldo Calpini <dada\@divinf.it>\n\n";
 
 print "Playing 'welcome.wav' synchronously...";
-$result = Win32::Sound::Play("welcome.wav");
+$result = Win32::Sound::Play("samples/welcome.wav");
 print (($result == 1) ? "OK\n" : "ERROR\n");
 
 print "Playing 1 second of 'welcome.wav' asynchronously...";
-$result = Win32::Sound::Play("welcome.wav", 1);
+$result = Win32::Sound::Play("samples/welcome.wav", 1);
 
 # note it returns immediately
 print (($result == 1) ? "OK\n" : "ERROR\n");

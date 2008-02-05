@@ -4,4 +4,7 @@ README
 Sound.pm
 Sound.xs
 test.pl
-welcome.wav
+samples/welcome.wav
+samples/devices.pl
+samples/format.pl
+samples/sinus.pl
