@@ -3,8 +3,9 @@ Makefile.PL
 README
 Sound.pm
 Sound.xs
-test.pl
-samples/welcome.wav
+ppport.h
 samples/devices.pl
 samples/format.pl
 samples/sinus.pl
+samples/welcome.wav
+test.pl
