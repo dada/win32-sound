@@ -5,8 +5,8 @@ README
 Sound.pm
 Sound.xs
 ppport.h
+sample.pl
 samples/devices.pl
 samples/format.pl
 samples/sinus.pl
 samples/welcome.wav
-test.pl
