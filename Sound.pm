@@ -17,9 +17,9 @@
 # 0.40 (16 Mar 1999) added the WaveOut object
 # 0.45 (09 Apr 1999) added $! support, documentation et goodies
 # 0.46 (25 Sep 1999) fixed small bug in DESTROY, wo was used without being
-#		     initialized (Gurusamy Sarathy <gsar@activestate.com>)
+#		     initialized (Gurusamy Sarathy <gsar@cpan.org>)
 # 0.47 (22 May 2000) support for passing Unicode string to Play()
-#                    (Doug Lankshear <dougl@activestate.com>)
+#                    (Doug Lankshear <doug@lankshear.net>)
 
 package Win32::Sound;
 
