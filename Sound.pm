@@ -2,7 +2,7 @@
 #
 # Win32::Sound - An extension to play with Windows sounds
 # 
-# Author: Aldo Calpini <dada@divinf.it>
+# Author: Aldo Calpini <dada@perl.it>
 # Version: 0.47
 # Info:
 #       http://www.divinf.it/dada/perl
@@ -573,7 +573,7 @@ Win32::Sound version 0.46, 25 Sep 1999.
 
 =head1 AUTHOR
 
-Aldo Calpini, C<dada@divinf.it>
+Aldo Calpini, C<dada@perl.it>
 
 Parts of the code provided and/or suggested by Dave Roth.
 
