@@ -3,7 +3,7 @@
 # Win32::Sound - An extension to play with Windows sounds
 # 
 # Author: Aldo Calpini <dada@perl.it>
-# Version: 0.47
+# Version: 0.48
 # Info:
 #       http://www.divinf.it/dada/perl
 #       http://www.perl.com/CPAN/authors/Aldo_Calpini
@@ -20,6 +20,11 @@
 #		     initialized (Gurusamy Sarathy <gsar@cpan.org>)
 # 0.47 (22 May 2000) support for passing Unicode string to Play()
 #                    (Doug Lankshear <doug@lankshear.net>)
+# 0.48 (16 Apr 2008) uploaded to CPAN separately from libwin32
+#	             updated email addresses
+#                    simplified Makefile.PL
+#	             added META.yml and ppport.h
+#                    renamed test.pl to sample.pl
 
 package Win32::Sound;
 

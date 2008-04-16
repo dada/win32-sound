@@ -1,7 +1,7 @@
 --- #YAML:1.0
 name: Win32-Internet
 abstract: An extension to play with Windows sounds
-version: 0.47
+version: 0.48
 author:
   - Aldo Calpini <dada@perl.it>
   - Jan Dubois <jand@activestate.com>
