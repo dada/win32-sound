@@ -3,7 +3,7 @@
 # Win32::Sound - An extension to play with Windows sounds
 # 
 # Author: Aldo Calpini <dada@perl.it>
-# Version: 0.48
+# Version: 0.49
 # Info:
 #       http://www.divinf.it/dada/perl
 #       http://www.perl.com/CPAN/authors/Aldo_Calpini
@@ -25,6 +25,8 @@
 #                    simplified Makefile.PL
 #	             added META.yml and ppport.h
 #                    renamed test.pl to sample.pl
+# 0.49 (?? ??? 2008) fix $VERSION number (0.48 was still 0.47 internally)
+#                    fix package name in META.yml
 
 package Win32::Sound;
 
@@ -79,7 +81,7 @@ sub AUTOLOAD {
 #######################################################################
 # STATIC OBJECT PROPERTIES
 #
-$VERSION="0.47"; 
+$VERSION="0.49"; 
 undef unless $VERSION; # [dada] to avoid "possible typo" warning
 
 #######################################################################
