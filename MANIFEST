@@ -4,8 +4,8 @@ Makefile.PL
 README
 Sound.pm
 Sound.xs
+eg/sample.pl
 ppport.h
-sample.pl
 samples/devices.pl
 samples/format.pl
 samples/sinus.pl
