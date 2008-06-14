@@ -25,8 +25,10 @@
 #                    simplified Makefile.PL
 #	             added META.yml and ppport.h
 #                    renamed test.pl to sample.pl
-# 0.49 (?? ??? 2008) fix $VERSION number (0.48 was still 0.47 internally)
+# 0.49 (13 Jun 2008) fix $VERSION number (0.48 was still 0.47 internally)
 #                    fix package name in META.yml
+#                    move sample.pl into eg/ subdirectory to prevent it
+#                    from being installed
 
 package Win32::Sound;
 
