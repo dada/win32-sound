@@ -94,9 +94,9 @@ sub Version { $VERSION }
 
 sub Volume {
     my(@in) = @_;
-    # Allows '0%'..'100%'   
-    $in[0] =~ s{ ([\d\.]+)%$ }{ int($1*100/255) }ex if defined $in[0];
-    $in[1] =~ s{ ([\d\.]+)%$ }{ int($1*100/255) }ex if defined $in[1];
+    # Allows '0%'..'100%'
+    $in[0] =~ s{ ([\d\.]+)%$ }{ int($1*65535/100) }ex if defined $in[0];
+    $in[1] =~ s{ ([\d\.]+)%$ }{ int($1*65535/100) }ex if defined $in[1];
     _Volume(@in);
 }
 
@@ -134,9 +134,9 @@ sub new {
 
 sub Volume {
     my(@in) = @_;
-    # Allows '0%'..'100%'   
-    $in[0] =~ s{ ([\d\.]+)%$ }{ int($1*255/100) }ex if defined $in[0];
-    $in[1] =~ s{ ([\d\.]+)%$ }{ int($1*255/100) }ex if defined $in[1];
+    # Allows '0%'..'100%'
+    $in[0] =~ s{ ([\d\.]+)%$ }{ int($1*65535/100) }ex if defined $in[0];
+    $in[1] =~ s{ ([\d\.]+)%$ }{ int($1*65535/100) }ex if defined $in[1];
     _Volume(@in);
 }
 

@@ -348,8 +348,8 @@ PPCODE:
         if(mmr == MMSYSERR_NOERROR) {
             if(GIMME == G_ARRAY) {
                 EXTEND(SP, 2);
-                XST_mIV(0, (long) volume & 0x00FF);
-                XST_mIV(1, (long) (volume & 0xFF00) >> 8);
+                XST_mIV(0, (long) volume & 0x0000FFFF);
+                XST_mIV(1, (long) (volume >> 16) & 0x0000FFFF);
                 XSRETURN(2);
             } else {
                 XSRETURN_IV(volume);
@@ -360,7 +360,7 @@ PPCODE:
         }
         break;
     case 1:
-        volume = SvIV(ST(0)) | SvIV(ST(0)) << 8;
+        volume = SvIV(ST(0)) | SvIV(ST(0)) << 16;
         mmr = waveOutSetVolume((HWAVEOUT) WAVE_MAPPER, volume);
         if(mmr == MMSYSERR_NOERROR) {
             XSRETURN_YES;
@@ -370,7 +370,7 @@ PPCODE:
         }
         break;
     default:
-        volume = SvIV(ST(0)) | SvIV(ST(1)) << 8;
+        volume = SvIV(ST(0)) | SvIV(ST(1)) << 16;
         mmr = waveOutSetVolume((HWAVEOUT) WAVE_MAPPER, volume);
         if(mmr == MMSYSERR_NOERROR) {
             XSRETURN_YES;
