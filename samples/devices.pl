@@ -1,18 +1,21 @@
+use strict;
+use warnings;
+
 use Win32::Sound;
 
-%order = qw(
+my %order = qw(
     name                1
     driver_version      2
     manufacturer_id     3
     product_id          4
 );
 
-@devs = Win32::Sound::Devices();
+my @devs = Win32::Sound::Devices();
 
-foreach $dev (@devs) {
+foreach my $dev (@devs) {
     print "$dev:\n";
-    %inf = Win32::Sound::DeviceInfo($dev);
-    foreach $key (
+    my %inf = Win32::Sound::DeviceInfo($dev);
+    foreach my $key (
     sort { 
         ($order{$a} or 99) <=> ($order{$b} or 99)
     } keys %inf) {

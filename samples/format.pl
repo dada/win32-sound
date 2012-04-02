@@ -1,9 +1,12 @@
+use strict;
+use warnings;
+
 use Win32::Sound;
 
 push @ARGV, "welcome.wav" if $#ARGV < 0;
 
-foreach $file (@ARGV) {
-    ($hz, $bit, $channels) = Win32::Sound::Format($file);
+foreach my $file (@ARGV) {
+    my($hz, $bit, $channels) = Win32::Sound::Format($file);
     if($hz and $bit and $channels) {
         printf( "%s: %.3fkHz %d-bit %s\n",
             $file,

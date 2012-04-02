@@ -1,7 +1,12 @@
+use strict;
+use warnings;
+
 use Win32::Sound;
 
+my $result;
+
 print "\nWin32::Sound version ", $Win32::Sound::VERSION, " Test Program\n";
-print "by Aldo Calpini <dada\@divinf.it>\n\n";
+print "by Aldo Calpini <dada\@perl.it>\n\n";
 
 print "Playing 'welcome.wav' synchronously...";
 $result = Win32::Sound::Play("samples/welcome.wav");

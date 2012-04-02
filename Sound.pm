@@ -3,10 +3,10 @@
 # Win32::Sound - An extension to play with Windows sounds
 # 
 # Author: Aldo Calpini <dada@perl.it>
-# Version: 0.49
+# Version: 0.50
 # Info:
-#       http://www.divinf.it/dada/perl
-#       http://www.perl.com/CPAN/authors/Aldo_Calpini
+#       http://dada.perl.it/
+#       https://github.com/dada/win32-sound
 #
 #######################################################################
 # Version history: 
@@ -29,6 +29,8 @@
 #                    fix package name in META.yml
 #                    move sample.pl into eg/ subdirectory to prevent it
 #                    from being installed
+# 0.50 (14 Mar 2012) fix longstanding Win32::Sound::Volume bug (RT #28113 and #43776)
+#                    updated documentation, contacts etc.
 
 package Win32::Sound;
 
@@ -83,7 +85,7 @@ sub AUTOLOAD {
 #######################################################################
 # STATIC OBJECT PROPERTIES
 #
-$VERSION="0.49"; 
+$VERSION="0.50"; 
 undef unless $VERSION; # [dada] to avoid "possible typo" warning
 
 #######################################################################
@@ -551,18 +553,18 @@ wave at 440Hz and saves it in F<sinus.wav>:
     use Win32::Sound;
     
     # Create the object
-    $WAV = new Win32::Sound::WaveOut(44100, 8, 2);
+    my $WAV = new Win32::Sound::WaveOut(44100, 8, 2);
     
-    $data = ""; 
-    $counter = 0;
-    $increment = 440/44100;
+    my $data = ""; 
+    my $counter = 0;
+    my $increment = 440/44100;
     
     # Generate 44100 samples ( = 1 second)
-    for $i (1..44100) {
+    for my $i (1..44100) {
 
         # Calculate the pitch 
         # (range 0..255 for 8 bits)
-        $v = sin($counter/2*3.14) * 128 + 128;    
+        my $v = sin($counter*2*3.14) * 127 + 128;    
 
         # "pack" it twice for left and right
         $data .= pack("cc", $v, $v);
@@ -578,7 +580,7 @@ wave at 440Hz and saves it in F<sinus.wav>:
 
 =head1 VERSION
 
-Win32::Sound version 0.46, 25 Sep 1999.
+Win32::Sound version 0.50, 14 Mar 2012.
 
 =head1 AUTHOR
 
