@@ -567,7 +567,7 @@ wave at 440Hz and saves it in F<sinus.wav>:
         my $v = sin($counter*2*3.14) * 127 + 128;    
 
         # "pack" it twice for left and right
-        $data .= pack("cc", $v, $v);
+        $data .= pack("CC", $v, $v);
 
         $counter += $increment;
     }
