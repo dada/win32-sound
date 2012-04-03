@@ -1,7 +1,7 @@
 --- #YAML:1.0
 name: Win32-Sound
 abstract: An extension to play with Windows sounds
-version: 0.49
+version: 0.50
 author:
   - Aldo Calpini <dada@perl.it>
   - Jan Dubois <jand@activestate.com>
@@ -10,7 +10,7 @@ requires:
   perl: 5.6
 resources:
   license: http://dev.perl.org/licenses/
-  homepage: http://code.google.com/p/libwin32/
+  homepage: https://github.com/dada/win32-sound
 meta-spec:
    version: 1.3
    url: http://module-build.sourceforge.net/META-spec-v1.3.html
