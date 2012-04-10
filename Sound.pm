@@ -3,34 +3,12 @@
 # Win32::Sound - An extension to play with Windows sounds
 # 
 # Author: Aldo Calpini <dada@perl.it>
-# Version: 0.50
+# Version: 0.51
 # Info:
 #       http://dada.perl.it/
 #       https://github.com/dada/win32-sound
 #
 #######################################################################
-# Version history: 
-# 0.01 (19 Nov 1996) file created
-# 0.03 (08 Apr 1997) first release
-# 0.30 (20 Oct 1998) added Volume/Format/Devices/DeviceInfo
-#                    (thanks Dave Roth!)
-# 0.40 (16 Mar 1999) added the WaveOut object
-# 0.45 (09 Apr 1999) added $! support, documentation et goodies
-# 0.46 (25 Sep 1999) fixed small bug in DESTROY, wo was used without being
-#		     initialized (Gurusamy Sarathy <gsar@cpan.org>)
-# 0.47 (22 May 2000) support for passing Unicode string to Play()
-#                    (Doug Lankshear <doug@lankshear.net>)
-# 0.48 (16 Apr 2008) uploaded to CPAN separately from libwin32
-#	             updated email addresses
-#                    simplified Makefile.PL
-#	             added META.yml and ppport.h
-#                    renamed test.pl to sample.pl
-# 0.49 (13 Jun 2008) fix $VERSION number (0.48 was still 0.47 internally)
-#                    fix package name in META.yml
-#                    move sample.pl into eg/ subdirectory to prevent it
-#                    from being installed
-# 0.50 (14 Mar 2012) fix longstanding Win32::Sound::Volume bug (RT #28113 and #43776)
-#                    updated documentation, contacts etc.
 
 package Win32::Sound;
 
@@ -85,7 +63,7 @@ sub AUTOLOAD {
 #######################################################################
 # STATIC OBJECT PROPERTIES
 #
-$VERSION="0.50"; 
+$VERSION="0.51"; 
 undef unless $VERSION; # [dada] to avoid "possible typo" warning
 
 #######################################################################
@@ -580,13 +558,15 @@ wave at 440Hz and saves it in F<sinus.wav>:
 
 =head1 VERSION
 
-Win32::Sound version 0.50, 14 Mar 2012.
+Win32::Sound version 0.51, 10 Apr 2012.
 
 =head1 AUTHOR
 
 Aldo Calpini, C<dada@perl.it>
 
 Parts of the code provided and/or suggested by Dave Roth.
+
+Additional fixes and module maintenance kindly provided by Jan Dubois, C<jand@activestate.com>.
 
 =cut
 
