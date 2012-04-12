@@ -2,6 +2,7 @@ MANIFEST
 META.yml
 Makefile.PL
 README
+Changes
 Sound.pm
 Sound.xs
 eg/sample.pl
