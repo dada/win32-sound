@@ -895,7 +895,7 @@ CODE:
         if(tmpsv != NULL) {
             buffer = INT2PTR(char _huge*, SvIV(*tmpsv));
             bufferlen = (LONG) GlobalSize((HGLOBAL) buffer);
-            printf("XS(WaveOut::Save): loaded bufferlen=%ld\n", bufferlen);
+            # printf("XS(WaveOut::Save): loaded bufferlen=%ld\n", bufferlen);
         } else {
             PerlSetError(-1, "No data loaded");
             RETVAL = -1;
