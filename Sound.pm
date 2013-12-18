@@ -405,6 +405,14 @@ audible you can either C<Open()> a wave file
 or C<Load()> binary data to the soundcard
 and then C<Write()> it.
 
+Note that by default Win32::Sound::WaveOut will use
+the first soundcard (eg. WAVEOUT0). If you want
+to use a different one, you have to do the following:
+
+    my $WAV = Win32::WaveOut->new();
+    $WAV->CloseDevice();
+    $WAV->OpenDevice(1); # open WAVEOUT1
+
 =item Close()
 
 Closes the wave file currently opened.
@@ -438,11 +446,23 @@ must contain 176400 bytes (44100 * 4).
 
 Opens the specified wave FILE.
 
-=item OpenDevice()
+=item OpenDevice([ID])
 
 Opens the wave output device with the
 current sound format (not needed unless
 you used C<CloseDevice()>).
+
+By default it will open the first device
+(eg. WAVEOUT0). If you have multiple soundcards,
+you can specify which one to use by adding
+the numeric ID of the (WAVEOUT) device. 
+
+Example:
+
+    $WAV->OpenDevice(1); # opens WAVEOUT1
+
+See also L<Win32::Sound::Devices()> to list
+the currently available soundcards.
 
 =item Pause()
 
