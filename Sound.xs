@@ -303,7 +303,7 @@ MODULE = Win32::Sound       PACKAGE = Win32::Sound
 PROTOTYPES: DISABLE
 
 long
-constant(name,arg)
+_constant(name,arg)
     char *name
     int arg
 CODE:
@@ -380,27 +380,6 @@ PPCODE:
         }
         break;
     }
-
-char *
-DeviceName()
-CODE:
-    WAVEOUTCAPS woc;
-    MMRESULT mmr;
-    ZeroMemory(&woc, sizeof(WAVEOUTCAPS));
-    mmr = waveOutGetDevCaps(
-        (UINT) WAVE_MAPPER, 
-        &woc, 
-        sizeof(WAVEOUTCAPS)
-    );
-    if(mmr == MMSYSERR_NOERROR) {
-        RETVAL = (char *) woc.szPname;
-    } else {
-        WaveOutCheckError(mmr);
-        RETVAL = NULL;
-    }
-OUTPUT:
-    RETVAL
-
 
 void
 Format(filename)

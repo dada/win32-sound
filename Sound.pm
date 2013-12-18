@@ -37,7 +37,7 @@ sub AUTOLOAD {
     ($constname = $AUTOLOAD) =~ s/.*:://;
     #reset $! to zero to reset any current errors.
     local $! = 0;
-    my $val = constant($constname, @_ ? $_[0] : 0);
+    my $val = _constant($constname, @_ ? $_[0] : 0);
     if ($! != 0) {
 
     # [dada] This results in an ugly Autoloader error
@@ -69,8 +69,6 @@ undef unless $VERSION; # [dada] to avoid "possible typo" warning
 #######################################################################
 # METHODS
 #
-
-sub Version { $VERSION }
 
 sub Volume {
     my(@in) = @_;
