@@ -3,7 +3,7 @@
 # Win32::Sound - An extension to play with Windows sounds
 # 
 # Author: Aldo Calpini <dada@perl.it>
-# Version: 0.51
+# Version: 0.52
 # Info:
 #       http://dada.perl.it/
 #       https://github.com/dada/win32-sound
@@ -63,7 +63,7 @@ sub AUTOLOAD {
 #######################################################################
 # STATIC OBJECT PROPERTIES
 #
-$VERSION="0.51"; 
+$VERSION="0.52"; 
 undef unless $VERSION; # [dada] to avoid "possible typo" warning
 
 #######################################################################
@@ -576,7 +576,7 @@ wave at 440Hz and saves it in F<sinus.wav>:
 
 =head1 VERSION
 
-Win32::Sound version 0.51, 10 Apr 2012.
+Win32::Sound version 0.52, 18 Dec 2013.
 
 =head1 AUTHOR
 

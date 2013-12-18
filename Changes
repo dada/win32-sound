@@ -1,5 +1,13 @@
 Version history for Win32::Sound
 
+0.52 (18 Dec 2013)
+    * Added repository cpan metadata (thanks dsteinbrunner)
+    * perl version correction (thanks dsteinbrunner and steve-m-hay)
+    * commented out spurious print in Win32::Sound::WaveOut::Save
+    * removed useless/undocumented stuff and made "constant" method private
+    * documented OpenDevice(ID) to use multiple soundcards with Win32::Sound::WaveOut (RT #64857)
+    * added minimal tests
+
 0.51 (10 Apr 2012)
     * repackaged because of bad permissions on distribution tar (doh!)
     * added Changes file
